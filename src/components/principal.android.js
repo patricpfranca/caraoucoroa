@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Image
-} from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const btnJogar = require('../img/botao_jogar.png');
 const btnSobreJogo = require('../img/sobre_jogo.png');
@@ -16,11 +13,25 @@ export default class Principal extends Component {
       <View style={styles.principal}>
         <View style={styles.apresentacao}>
           <Image source={logo} />
-          <Image source={btnJogar} />
+
+          <TouchableHighlight
+            onPress={() => { Actions.resultado(); }}
+          >
+            <Image source={btnJogar} />
+          </TouchableHighlight>
         </View>
+
         <View style={styles.rodape}>
-          <Image source={btnSobreJogo} />
-          <Image source={btnOutrosJogos} />
+          <TouchableHighlight
+            onPress={() => { Actions.sobrejogos(); }}
+          >
+            <Image source={btnSobreJogo} />
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => { Actions.outrosjogos(); }}
+          >
+            <Image source={btnOutrosJogos} />
+          </TouchableHighlight>
         </View>
       </View>
     );
